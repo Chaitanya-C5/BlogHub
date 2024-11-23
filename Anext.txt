@@ -1,0 +1,5 @@
+insert 2 users 3 posts
+either test by postman or frontend.
+
+login
+signup
