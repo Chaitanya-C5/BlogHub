@@ -30,6 +30,6 @@ app.use(
 app.use('/api', postRoutes);
 app.use('/api', userRoutes);
 
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Service started")
 });
