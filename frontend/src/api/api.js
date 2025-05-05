@@ -43,12 +43,12 @@ export const searchByFilter = (token, filter, query) => apiRequest("get", `/api/
 export const profileUpload = (token, profilePicture) => {
   const formData = new FormData();
   formData.append("profilePicture", profilePicture);
-  return apiRequest("post", "/profile/update", token, formData, true);
+  return apiRequest("post", "/api/profile/update", token, formData, true);
 };
 
 export const updateProfile = (token, form) => {
   const username = localStorage.getItem("username");
-  return apiRequest("patch", `/profile/update/${username}`, token, form, true);
+  return apiRequest("patch", `/api/profile/update/${username}`, token, form, true);
 };
 
 export const getImageURL = (token, form) => apiRequest("post", "/api/posts/imageurl", token, form, true);
@@ -60,7 +60,7 @@ export const resetPassword = (email) => apiRequest("post", "/api/reset-password"
 export const setNewPassword = (token, password) => apiRequest("post", "/api/set-new-password", null, { token, password });
 
 export const fetchPosts = (token, query, category='All', limit = 3) => {
-  let MODIFIED_URL = "/posts/user";
+  let MODIFIED_URL = "/api/posts/user";
   switch (query.tag) {
     case "famous": MODIFIED_URL = "/posts/famous"; break;
     case "updates": MODIFIED_URL = "/posts/updates"; break;
@@ -75,10 +75,10 @@ export const fetchSinglePost = (token, postId) => apiRequest("get", `/api/posts/
 export const fetchPostByTitle = (token, postTitle) => apiRequest("get", `/api/posts/search/${postTitle}`, token);
 
 export const createPost = (title, category, content, tags, token, username) =>
-  apiRequest("post", "/posts/add", token, { title, category, content, tags, username });
+  apiRequest("post", "/api/posts/add", token, { title, category, content, tags, username });
 
 export const updatePost = (token, postId, action, payload) =>
-  apiRequest("patch", `/posts/update/${postId}`, token, { action, payload });
+  apiRequest("patch", `/api/posts/update/${postId}`, token, { action, payload });
 
 export const deletePost = (token, postId) => apiRequest("delete", `/api/posts/delete/${postId}`, token);
 
