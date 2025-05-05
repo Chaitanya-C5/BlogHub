@@ -138,7 +138,6 @@ export const fetchUserPosts = async (req,res) => {
 export const addPost = async (req, res) => {
   try {
     const { title, category, content, tags, visibility, username } = req.body;
-    //console.log(req.body)
 
     if (!title || !content || !username) {
       return res.status(400).json({ message: "Title, content, and username are required." });
@@ -255,7 +254,6 @@ export const addPost = async (req, res) => {
 
     return res.status(201).json({ message: "Post created successfully", post: newPost });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Internal server error", error: error.message });
   }
 };
@@ -366,11 +364,9 @@ export const editPost = async (req, res) => {
       return res.status(404).json({ message: "User not found." });
     }
 
-    console.log("Post and user updated successfully!", updatedPost, updatedUser);
     return res.status(200).json({ message: "Post and user updated successfully", post: updatedPost });
 
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ message: "Internal server error", error: error.message });
   }
 };
@@ -387,7 +383,6 @@ export const removePost = async (req, res) => {
 
     res.status(200).json({ message: "Post deleted successfully", post: deletedPost });
   } catch (error) {
-    console.error("Error deleting post:", error);
     res.status(500).json({ message: "Error deleting post" });
   }
 };
@@ -408,7 +403,6 @@ export const getSecureImageURL = async (req,res) => {
     res.status(200).json({ imageUrl: result.secure_url })
 
   } catch (error) {
-    console.error("Error uploading profile picture:", error);
     throw new Error("Error uploading profile picture");
   }
 }
@@ -452,11 +446,9 @@ export const getSearchResults = async(req,res) => {
         })
       );
     }
-    console.log("Search results:", results);
     return res.status(200).json(results);
     
   } catch (error) {
-    console.error("Error fetching results", error);
     throw new Error("Error fetching results");
   }
 }

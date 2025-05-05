@@ -42,7 +42,6 @@ export const signup = async (req, res) => {
       token,
     });
   } catch (err) {
-    console.error("Error during sign-up:", err.message);
     res.status(500).json({
       message: "An error occurred while creating the user.",
       error: err.message,
@@ -72,7 +71,6 @@ export const login = async (req, res) => {
       token,
     });
   } catch (err) {
-    console.error("Error during login:", err.message);
     res.status(500).json({
       message: "An error occurred during login",
       error: err.message,
@@ -92,13 +90,11 @@ export const getImageURL = async (profilePicture) => {
 
     return result.secure_url; 
   } catch (error) {
-    console.error("Error uploading profile picture:", error);
     throw new Error("Error uploading profile picture");
   }
 }
 
 export const updateUser = async (req, res) => {
-  console.log('mid')
   const { username } = req.params
   try {
     const { following, email } = req.body;
@@ -153,7 +149,6 @@ export const updateUser = async (req, res) => {
         currentUserUpdateFields,
         { new: true }
       );
-      console.log(updatedCurrentUser, updatedFollowingUser)
 
       return res.status(200).json({ message: "Profile updated successfully!", user: updatedCurrentUser });
     }
@@ -173,7 +168,6 @@ export const updateUser = async (req, res) => {
     }
     res.status(200).json({ message: "Profile updated successfully!", user: updatedUser });
   } catch (error) {
-    console.error("Error updating profile:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -212,7 +206,6 @@ export const fetchUserProfile = async (req, res) => {
 
     res.status(200).json(userProfile);
   } catch (error) {
-    console.error("Error fetching user:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -224,7 +217,6 @@ export const fetchProfilePic = async (req, res) => {
     const { profilePicture } = user
     res.status(200).json({ profilePicture })
   } catch(error) {
-    console.error("Error fetching profile picture:", error)
     res.status(500).json({ message: "Internal Server Error" })
   }
 }
@@ -340,7 +332,6 @@ export const forgotPassword = async (req, res) => {
 
     res.status(200).json({ message: "Password reset email sent successfully!" });
   } catch (err) {
-    console.error("Error during forgot password:", err.message);
     res.status(500).json({
       message: "An error occurred during login",
       error: err.message,
@@ -399,19 +390,15 @@ export const fetchUsernames = async(req, res) => {
     let { category } = req.query
     category = category.toLowerCase()
 
-    console.log(username, category)
     const users = await User.findOne({ username }).select(`${category}`)
-    console.log(users)
 
     const results = []
     for(const user of users[`${category}`]) {
       const profileObject = await User.findOne({ username: user }).select('profilePicture')
       results.push({ username: user, profilePicture: profileObject.profilePicture })
     }
-    console.log(results)
     res.status(200).json(results)
   } catch(error) {
-    console.error("Error fetching user:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
@@ -432,7 +419,6 @@ export const getCompleteStats = async(req, res) => {
 
     res.status(200).json({ totalUsers, totalWriters, totalBlogs, totalLikes: totalLikes.length > 0 ? totalLikes[0].totalLikes : 0 })
   } catch(error) {
-    console.error("Error fetching user:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
