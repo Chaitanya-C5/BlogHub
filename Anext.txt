@@ -1,5 +1,8 @@
-insert 2 users 3 posts
-either test by postman or frontend.
-
-login
-signup
+3. Colors of the blog page make sure to match with home page.
+- revise render concept and fix re-rendering issue in categories.
+- Responsiveness for all components
+- change the Localhost URL in frontend and backend in production.
+    places to change in frontend:
+        i) api.js
+    places to change in backend:
+        ii) .env file (FRONTEND_URL)

@@ -1,12 +1,19 @@
 import express from "express";
 import authenticate from "../middleware/authenticate.js";
-import { getPosts, editPost, addPost, removePost } from "../controllers/postController.js";
+import { fetchFamousPosts, fetchLikedPosts, fetchSavedPosts, fetchUserPosts, fetchSinglePost, addPost, editPost, removePost, getSecureImageURL, getSearchResults, fetchUpdatedPosts } from "../controllers/postController.js";
 
 const router = express.Router();
 
-router.get("/posts", authenticate, getPosts);
-router.post("/add", authenticate, addPost);
-router.patch("/update", authenticate, editPost);
-router.delete("/delete", authenticate, removePost);
+router.get('/posts/user/:category', authenticate, fetchUserPosts);
+router.get("/posts/liked/:category", authenticate, fetchLikedPosts);
+router.get("/posts/saved/:category", authenticate, fetchSavedPosts);
+router.get("/posts/famous/:category", authenticate,fetchFamousPosts);
+router.get("/posts/updates/:category", authenticate,fetchUpdatedPosts);
+router.get('/posts/:id', authenticate, fetchSinglePost);
+router.get('/search', authenticate, getSearchResults);
+router.post("/posts/add", authenticate, addPost);
+router.patch("/posts/update/:postId", authenticate, editPost);
+router.delete("/posts/delete/:postId", authenticate, removePost);
+router.post("/posts/imageurl", authenticate, getSecureImageURL);
 
 export default router;

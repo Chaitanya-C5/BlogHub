@@ -1,19 +1,16 @@
-import pkg from 'pg';
 import { config as configDotenv } from "dotenv";
+import mongoose from 'mongoose';
 
-const { Pool } = pkg;
 configDotenv();
 
-const db = new Pool({
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-});
-
-db.connect()
-    .then(() => console.log('Database connected'))
-    .catch((err) => console.log('Error connecting to database',err.stack))
+const db = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log("MongoDB connected successfully");
+    } catch (err) {
+        console.error("Error connecting to MongoDB:", err.message);
+        process.exit(1); 
+    }
+};
 
 export default db;

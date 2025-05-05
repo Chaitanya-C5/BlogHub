@@ -1,3 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-custom {
+  background-image: url('./assets/mpodium.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  filter: brightness(80%);
+  z-index: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.nav-links a:active {
+  font-weight: bold;
+  border-bottom: 2px solid blue;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+@media (max-width: 320px) {
+  .w-xs-300 {
+    width: 250px;
+  }
+  .w-xs-font {
+    font-size: small;
+  }
+
+  .w-xs-heading-font {
+    font-size: 20px;
+  }
+}
+
+.custom-input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}

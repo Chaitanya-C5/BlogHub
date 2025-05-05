@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { fetchPosts } from '../api/api';
+import { LoadingSpinner, ErrorMessage } from '../utils/CommonStates';
 
 const PostList = () => {
 
   const [posts, setPosts] = useState()
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -13,26 +14,20 @@ const PostList = () => {
                 const token = localStorage.getItem("token")
                 const response = await fetchPosts(token)
                 setPosts(response.data)
-                setLoading(false)
             } catch(error) {
                 console.error(error);
-                setError(error)
+                setError(error.message)
+            } finally {
                 setLoading(false)
             }
         }
         fetchData();
   },[])
 
-  if(loading) {
-    return <h1>Loading ...</h1>
-  }
-
-  if(error) {
-    return <>
-        <h1>Error...</h1>
-        <h2>{error?.message} ...</h2>
-    </>
-  }
+  if(isLoading) return <LoadingSpinner />
+  
+  if (error) return <ErrorMessage error={error} />;
+  
 
   return (
      <div>
