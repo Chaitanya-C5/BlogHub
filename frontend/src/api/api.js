@@ -28,17 +28,17 @@ const apiRequest = async (method, endpoint, token, data = null, isFormData = fal
   }
 };
 
-export const registerUser = (form) => apiRequest("post", "/register", null, form);
+export const registerUser = (form) => apiRequest("post", "/api/register", null, form);
 
-export const loginUser = (form) => apiRequest("post", "/login", null, form);
+export const loginUser = (form) => apiRequest("post", "/api/login", null, form);
 
-export const fetchStats = () => apiRequest("get", "/stats", null)
+export const fetchStats = () => apiRequest("get", "/api/stats", null)
 
-export const fetchUser = (token, username) => apiRequest("get", `/profile/${username}`, token);
+export const fetchUser = (token, username) => apiRequest("get", `/api/profile/${username}`, token);
 
-export const fetchUsers = (token, query) => apiRequest("get", `/users?category=${query}`, token)
+export const fetchUsers = (token, query) => apiRequest("get", `/api/users?category=${query}`, token)
 
-export const searchByFilter = (token, filter, query) => apiRequest("get", `/search?category=${filter}&value=${query}`, token);
+export const searchByFilter = (token, filter, query) => apiRequest("get", `/api/search?category=${filter}&value=${query}`, token);
 
 export const profileUpload = (token, profilePicture) => {
   const formData = new FormData();
@@ -51,13 +51,13 @@ export const updateProfile = (token, form) => {
   return apiRequest("patch", `/profile/update/${username}`, token, form, true);
 };
 
-export const getImageURL = (token, form) => apiRequest("post", "/posts/imageurl", token, form, true);
+export const getImageURL = (token, form) => apiRequest("post", "/api/posts/imageurl", token, form, true);
 
-export const getProfilePic = (token) => apiRequest("get","/user/pic",token)
+export const getProfilePic = (token) => apiRequest("get","/api/user/pic",token)
 
-export const resetPassword = (email) => apiRequest("post", "/reset-password", null, { email });
+export const resetPassword = (email) => apiRequest("post", "/api/reset-password", null, { email });
 
-export const setNewPassword = (token, password) => apiRequest("post", "/set-new-password", null, { token, password });
+export const setNewPassword = (token, password) => apiRequest("post", "/api/set-new-password", null, { token, password });
 
 export const fetchPosts = (token, query, category='All', limit = 3) => {
   let MODIFIED_URL = "/posts/user";
@@ -70,9 +70,9 @@ export const fetchPosts = (token, query, category='All', limit = 3) => {
   return apiRequest("get", `${MODIFIED_URL}/${category}?user=${query.username}&skip=${query.skip}&limit=${limit}`, token);
 };
 
-export const fetchSinglePost = (token, postId) => apiRequest("get", `/posts/${postId}`, token);
+export const fetchSinglePost = (token, postId) => apiRequest("get", `/api/posts/${postId}`, token);
 
-export const fetchPostByTitle = (token, postTitle) => apiRequest("get", `/posts/search/${postTitle}`, token);
+export const fetchPostByTitle = (token, postTitle) => apiRequest("get", `/api/posts/search/${postTitle}`, token);
 
 export const createPost = (title, category, content, tags, token, username) =>
   apiRequest("post", "/posts/add", token, { title, category, content, tags, username });
@@ -80,6 +80,6 @@ export const createPost = (title, category, content, tags, token, username) =>
 export const updatePost = (token, postId, action, payload) =>
   apiRequest("patch", `/posts/update/${postId}`, token, { action, payload });
 
-export const deletePost = (token, postId) => apiRequest("delete", `/posts/delete/${postId}`, token);
+export const deletePost = (token, postId) => apiRequest("delete", `/api/posts/delete/${postId}`, token);
 
 export default apiRequest;
