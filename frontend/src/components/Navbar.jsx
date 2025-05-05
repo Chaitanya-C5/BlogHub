@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -55,9 +55,9 @@ const Navbar = () => {
                     {link.name}
                   </a>
                 ))}
-                <a href="/blogs" className="py-2 hover:text-slate-300">
+                <Link to="/blogs" className="py-2 hover:text-slate-300">
                   Blogs
-                </a>
+                </Link>
               </nav>
             </div>
 
