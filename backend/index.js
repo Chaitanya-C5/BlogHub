@@ -14,10 +14,10 @@ const swaggerDocument = YAML.parse(file);
 const app = express();
 db();
 
+app.use(cors({ origin: 'https://bloghub-dnwq.onrender.com' }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
-app.use(cors());
 app.use(urlencoded({ extended: true }))
 app.use(
     fileUpload({
