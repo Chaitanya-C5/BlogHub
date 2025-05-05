@@ -7,7 +7,7 @@ import { useTheme } from '../hooks/useTheme';
 const Blogs = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const { darkMode, toggleDarkMode } = useTheme();
+  const { darkMode } = useTheme();
   const sidebarRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -199,7 +199,7 @@ const Blogs = () => {
       { selectedItem !== 'create' && selectedItem !== 'followers' && selectedItem !== 'following' ?
         (
           <div className={`flex flex-col min-h-screen ${darkMode ? 'bg-[#0a111e] text-white' : 'bg-white'}`}>
-            <MiniHeader setMode={toggleDarkMode}/>
+            <MiniHeader/>
 
             <Outlet />
           </div>
