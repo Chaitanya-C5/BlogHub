@@ -57,7 +57,7 @@ const LoginPageCanvas = () => {
       setTimeout(() => {
         navigate(redirectUrl);
         setForm(initialState);
-      }, 1000);
+      }, 500);
     } catch (error) {
       setAlertMessage(error.response.data.message);
       setAlertType("error");
