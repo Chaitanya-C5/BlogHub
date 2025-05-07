@@ -29,6 +29,7 @@ const PostCards = ({ title, posts: initialPosts }) => {
     await deletePost(token, postId);
     setPosts(currentPosts => currentPosts.filter(post => post._id !== postId));
     setActiveMenu(null);
+    setShowDeletePopUp(false);
   };
 
   const handleLike = (e, postId) => {
@@ -97,11 +98,13 @@ const PostCards = ({ title, posts: initialPosts }) => {
   const toggleMenu = (e, postId) => {
     e.stopPropagation();
     setActiveMenu(activeMenu === postId ? null : postId);
+    // Reset delete popup when toggling menu
+    setShowDeletePopUp(false);
   };
 
-  const handlePopUp = () => {
+  const handlePopUp = (e) => {
+    if (e) e.stopPropagation();
     setShowDeletePopUp(false);
-    setActiveMenu(null);
   };
 
   return (
@@ -126,7 +129,7 @@ const PostCards = ({ title, posts: initialPosts }) => {
               >
                 {isOwnPost && (
                   <>
-                    <div className="absolute top-2 right-2 overflow-hidden">
+                    <div className="absolute top-2 right-2 z-10 overflow-hidden">
                       <button
                         className={`p-2 rounded-full transition-colors ${darkMode ? 'text-blue-400 hover:bg-[#2c3e67]' : 'text-blue-800 hover:bg-[#b7d1f7]'}`}
                         onClick={(e) => toggleMenu(e, post._id)}
@@ -135,9 +138,9 @@ const PostCards = ({ title, posts: initialPosts }) => {
                       </button>
                     </div>
 
-                  {activeMenu === post._id && (
+                    {activeMenu === post._id && (
                       <div
-                        className={`absolute top-10 right-0 shadow-lg rounded-md py-1 w-36 z-10 border ${
+                        className={`absolute top-10 right-2 shadow-lg rounded-md py-1 w-36 z-20 border ${
                           darkMode ? 'bg-[#0f192c] border-blue-800 text-gray-200' : 'bg-white border-gray-200'
                         }`}
                         onClick={(e) => e.stopPropagation()}
@@ -146,7 +149,10 @@ const PostCards = ({ title, posts: initialPosts }) => {
                           className={`flex items-center gap-2 px-4 py-2 w-full text-left ${
                             darkMode ? 'text-gray-200 hover:bg-[#2c3e67]' : 'text-gray-700 hover:bg-[#f1f9ff]'
                           } transition-colors`}
-                          onClick={() => setShowDeletePopUp(true)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShowDeletePopUp(true);
+                          }}
                         >
                           <Trash2 size={16} className="text-red-500" />
                           Delete
@@ -154,48 +160,54 @@ const PostCards = ({ title, posts: initialPosts }) => {
                       </div>
                     )}
 
-                    { showDeletePopUp && (
-                        <div className={`absolute top-0 right-full mr-2 p-3 rounded-lg shadow-lg w-48 border ${
+                    {showDeletePopUp && activeMenu === post._id && (
+                      <div 
+                        className={`absolute top-16 right-2 p-3 rounded-lg shadow-lg w-48 z-30 border ${
                           darkMode ? 'bg-[#0f192c] border-blue-800 text-gray-200' : 'bg-white border-gray-200'
-                        }`}>
+                        }`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <button 
+                          onClick={(e) => handlePopUp(e)}
+                          className={`absolute top-1 right-1 ${darkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}
+                        >
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            className="h-4 w-4" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2"
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                          >
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                          </svg>
+                        </button>
+                        <p className={`mb-3 text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Delete this post?</p>
+                        <div className="flex gap-2 justify-end">
                           <button 
-                              onClick={handlePopUp}
-                              className={`absolute top-1 right-1 ${darkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}
-                            >
-                              <svg 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                className="h-4 w-4" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2"
-                                strokeLinecap="round" 
-                                strokeLinejoin="round"
-                              >
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                              </svg>
+                            className={`px-3 py-1 rounded-md text-sm font-medium ${
+                              darkMode ? 'text-gray-200 bg-[#2c3e67] hover:bg-[#3a4e7c]' : 'text-gray-600 bg-gray-100 hover:bg-gray-200'
+                            }`}
+                            onClick={(e) => handlePopUp(e)}
+                          >
+                            No
                           </button>
-                          <p className={`mb-3 text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Delete this post?</p>
-                          <div className="flex gap-2 justify-end">
-                            <button 
-                              className={`px-3 py-1 rounded-md text-sm font-medium ${
-                                darkMode ? 'text-gray-200 bg-[#2c3e67] hover:bg-[#3a4e7c]' : 'text-gray-600 bg-gray-100 hover:bg-gray-200'
-                              }`}
-                              onClick={handlePopUp}
-                            >
-                              No
-                            </button>
-                            <button 
-                              className="px-3 py-1 rounded-md text-sm font-medium text-white bg-red-500 hover:bg-red-600"
-                              onClick={() => handleDelete(post._id)}
-                            >
-                              Yes
-                            </button>
-                          </div>
+                          <button 
+                            className="px-3 py-1 rounded-md text-sm font-medium text-white bg-red-500 hover:bg-red-600"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDelete(post._id);
+                            }}
+                          >
+                            Yes
+                          </button>
                         </div>
-                      )}
-                    </>
+                      </div>
+                    )}
+                  </>
                 )}
 
                 <div className="p-6">
@@ -292,24 +304,24 @@ const PostCards = ({ title, posts: initialPosts }) => {
                       </button>
                       <Snackbar
                         open={openSnackbar}
-                      autoHideDuration={2000}
-                      onClose={handleCloseSnackbar}
-                      message="Link copied to clipboard"
-                      ContentProps={{
-                        sx: {
-                          background: darkMode 
-                            ? 'linear-gradient(to right, #3b82f6, #6366f1)' 
-                            : 'linear-gradient(to right, #3b82f6, #06b6d4)',
-                          color: '#ffffff',
-                          fontFamily: 'inherit',
-                          border: darkMode ? '1px solid #3b4c79' : '1px solid #b7d1f7',
-                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
-                          '& .MuiSnackbarContent-message': {
-                            fontSize: '0.875rem',
-                            fontWeight: 500
+                        autoHideDuration={2000}
+                        onClose={handleCloseSnackbar}
+                        message="Link copied to clipboard"
+                        ContentProps={{
+                          sx: {
+                            background: darkMode 
+                              ? 'linear-gradient(to right, #3b82f6, #6366f1)' 
+                              : 'linear-gradient(to right, #3b82f6, #06b6d4)',
+                            color: '#ffffff',
+                            fontFamily: 'inherit',
+                            border: darkMode ? '1px solid #3b4c79' : '1px solid #b7d1f7',
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
+                            '& .MuiSnackbarContent-message': {
+                              fontSize: '0.875rem',
+                              fontWeight: 500
+                            }
                           }
-                        }
-                      }}
+                        }}
                       /> 
                     </div>
                   </div>
