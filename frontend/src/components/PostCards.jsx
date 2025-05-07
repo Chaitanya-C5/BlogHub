@@ -125,15 +125,17 @@ const PostCards = ({ title, posts: initialPosts }) => {
                           ${darkMode ? 'bg-[#1d2d50] border border-blue-800' : 'bg-[#e6f1f9]'}`}
               >
                 {isOwnPost && (
-                  <div className="absolute top-2 right-2">
-                    <button
-                      className={`p-2 rounded-full transition-colors ${darkMode ? 'text-blue-400 hover:bg-[#2c3e67]' : 'text-blue-800 hover:bg-[#b7d1f7]'}`}
-                      onClick={(e) => toggleMenu(e, post._id)}
-                    >
-                      <MoreVertical size={20} />
-                    </button>
+                  <>
+                    <div className="absolute top-2 right-2 overflow-hidden">
+                      <button
+                        className={`p-2 rounded-full transition-colors ${darkMode ? 'text-blue-400 hover:bg-[#2c3e67]' : 'text-blue-800 hover:bg-[#b7d1f7]'}`}
+                        onClick={(e) => toggleMenu(e, post._id)}
+                      >
+                        <MoreVertical size={20} />
+                      </button>
+                    </div>
 
-                    {activeMenu === post._id && (
+                  {activeMenu === post._id && (
                       <div
                         className={`absolute top-10 right-0 shadow-lg rounded-md py-1 w-36 z-10 border ${
                           darkMode ? 'bg-[#0f192c] border-blue-800 text-gray-200' : 'bg-white border-gray-200'
@@ -193,7 +195,7 @@ const PostCards = ({ title, posts: initialPosts }) => {
                       )}
                       </div>
                     )}
-                  </div>
+                    </>
                 )}
 
                 <div className="p-6">
