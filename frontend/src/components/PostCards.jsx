@@ -151,8 +151,10 @@ const PostCards = ({ title, posts: initialPosts }) => {
                           <Trash2 size={16} className="text-red-500" />
                           Delete
                         </button>
+                      </div>
+                    )}
 
-                        {showDeletePopUp && (
+                    { showDeletePopUp && (
                         <div className={`absolute top-0 right-full mr-2 p-3 rounded-lg shadow-lg w-48 border ${
                           darkMode ? 'bg-[#0f192c] border-blue-800 text-gray-200' : 'bg-white border-gray-200'
                         }`}>
@@ -193,8 +195,6 @@ const PostCards = ({ title, posts: initialPosts }) => {
                           </div>
                         </div>
                       )}
-                      </div>
-                    )}
                     </>
                 )}
 

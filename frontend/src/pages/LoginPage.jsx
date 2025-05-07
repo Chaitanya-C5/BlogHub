@@ -61,6 +61,7 @@ const LoginPageCanvas = () => {
     } catch (error) {
       setAlertMessage(error.response.data.message);
       setAlertType("error");
+      window.location.reload();
     } finally {
       setLoading(false);
     }
