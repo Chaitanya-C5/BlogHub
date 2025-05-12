@@ -32,7 +32,6 @@ const PostDetailModal = ({ post, onClose }) => {
       try {
         const token = localStorage.getItem('token') || '';
         const response = await fetchSinglePost(token, post._id);
-        console.log(response.post)
         setFullPost(response.post);
       } catch (err) {
         setError(err.message);

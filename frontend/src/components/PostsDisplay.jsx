@@ -77,7 +77,6 @@ const PostsDisplay = ({ title, query }) => {
   const handleCategoryClick = (selectedCategory) => {
     // e.preventDefault();
     setCategory(selectedCategory);
-    console.log(`Category selected: ${selectedCategory}`);
   };
 
   const nextCategoryPage = () => {

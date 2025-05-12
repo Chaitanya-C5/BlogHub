@@ -40,7 +40,6 @@ const PostFullDisplay = () => {
       try {
         const token = localStorage.getItem('token') || '';
         const response = await fetchSinglePost(token, postId);
-        console.log('JI', response.post);
         setPost(response.post);
         setLoading(false);
       } catch (err) {

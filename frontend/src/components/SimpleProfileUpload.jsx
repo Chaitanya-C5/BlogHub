@@ -37,8 +37,7 @@ const SimpleProfileUploadCanvas = () => {
         return;
       }
       try {
-        const response = await profileUpload(token, profilePicture);
-        console.log('comp',response)
+        await profileUpload(token, profilePicture);
         navigate("/"); 
       } catch (error) {
         console.error(error);

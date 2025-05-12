@@ -18,7 +18,6 @@ const Members = ({ title }) => {
       try {
         const response = await fetchUsers(token, title);
         setFetchResults(response)
-        console.log("Search results:", response);
       } catch (err) {
         console.error("Error fetching search results:", err);
         setError(err.message)

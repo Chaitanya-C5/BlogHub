@@ -27,13 +27,11 @@ const UserProfile = () => {
   }, []);
 
   useEffect(() => {
-    console.log('kk',posts);
   },[posts]);
 
   const fetchUserData = async () => {
     try {
       const response = await fetchUser(token, username);
-      console.log(response);
       setUser({ ...response.user, ...response.stats });
       setPosts(response.posts);
       setFollow(response?.user.followers);

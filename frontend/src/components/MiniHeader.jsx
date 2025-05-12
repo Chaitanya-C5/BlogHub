@@ -47,7 +47,6 @@ const MiniHeader = () => {
     try {
       const response = await searchByFilter(token, searchFilter, searchValue);
       setSearchResults(response);
-      console.log("Search results:", response);
     } catch (err) {
       console.error("Error fetching search results:", err);
     }

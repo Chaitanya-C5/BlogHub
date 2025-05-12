@@ -145,7 +145,6 @@ const CreatePost = () => {
         const quill = quillRef.current.getEditor();
           
         const range = quill.getSelection(true);
-        console.log('range', range)
           
         quill.insertEmbed(range.index, 'image', response.imageUrl);
           
