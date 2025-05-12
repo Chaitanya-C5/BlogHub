@@ -7,7 +7,7 @@ A feature-rich blogging platform where users can create, discover, and engage wi
 
 ## Live Demo
 
-The application is deployed and can be accessed at: [[BlogHub](https://bloghub-dnwq.onrender.com)]
+The application is deployed and can be accessed at: [BlogHub](https://bloghub-dnwq.onrender.com)
 
 ## Technologies Used
 
@@ -59,7 +59,7 @@ The application is deployed and can be accessed at: [[BlogHub](https://bloghub-d
 
 Gella Chaitanya Venkata Sai - [gellachaitanyavenkatasai@gmail.com](mailto:gellachaitanyavenkatasai@gmail.com)
 
-Project Link: [[BlogHub](https://github.com/Chaitanya-C5/BlogHub/)]
+Project Link: [BlogHub](https://github.com/Chaitanya-C5/BlogHub/)
 
 ---
 
