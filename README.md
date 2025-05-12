@@ -63,4 +63,4 @@ Project Link: [[BlogHub](https://github.com/Chaitanya-C5/BlogHub/)]
 
 ---
 
-Made with ❤️ by [Gella Chaitanya Venkata Sai]
+Made with ❤️ by Gella Chaitanya Venkata Sai
