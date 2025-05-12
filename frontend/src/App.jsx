@@ -22,7 +22,6 @@ function App() {
     <ThemeProvider>
       <Router>
         <Routes>
-          <Route component={NotFound} />
           <Route path="/" element={<Home/>} />
           <Route path="/signup" element={<SignUpPage/>} />
           <Route path="/profilepic" element={<SimpleProfileUpload/>} />
@@ -44,6 +43,7 @@ function App() {
           <Route path="/blogs/posts/:postId" element={<ProtectedRoute> <PostFullDisplay /> </ProtectedRoute>} />
           <Route path="/profile/:username" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path='/posts' element={<ProtectedRoute> <PostList /> </ProtectedRoute>} />
+          <Route path="*" component={NotFound} />
         </Routes>
       </Router>
     </ThemeProvider>
