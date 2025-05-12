@@ -57,9 +57,9 @@ The application is deployed and can be accessed at: [[https://bloghub-dnwq.onren
 
 ## Contact
 
-Your Name - [gellachaitanyavenkatasai@gmail.com](mailto:gellachaitanyavenkatasai@gmail.com)
+Your Name - [Gella Chaitanya Venkata Sai](mailto:gellachaitanyavenkatasai@gmail.com)
 
-Project Link: [[https://github.com/yourusername/bloghub](https://github.com/Chaitanya-C5/BlogHub/)]
+Project Link: [[BlogHub](https://github.com/Chaitanya-C5/BlogHub/)]
 
 ---
 
