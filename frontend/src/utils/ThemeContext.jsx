@@ -13,8 +13,8 @@ export const ThemeProvider = ({ children }) => {
     , []);
 
     const toggleDarkMode = () => {
+        localStorage.setItem("theme", darkMode ? "light" : "dark");
         setDarkMode((prevMode) => !prevMode);
-        localStorage.setItem("theme", !darkMode ? "light" : "dark");
     }
 
     return (
