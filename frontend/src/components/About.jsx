@@ -52,7 +52,7 @@ const About = () => {
               <div className="w-full flex justify-center md:justify-start mt-6">
                 <button 
                   className="px-6 md:px-8 py-3 md:py-4 text-white bg-blue-600 hover:bg-[#0f192c] hover:border-2 hover:border-white rounded-full transition-colors duration-300 text-base md:text-lg font-semibold"
-                  onClick={() => navigate('/login')}>
+                  onClick={() => navigate('/blogs')}>
                     Start Blogging
                 </button>
               </div>
