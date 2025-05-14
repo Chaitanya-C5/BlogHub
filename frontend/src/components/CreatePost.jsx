@@ -297,7 +297,7 @@ const CreatePost = () => {
             >
               {
                 categories.map((category, index) => (
-                  <MenuItem key={index} value={category} sx={{ color: darkMode ? 'white' : 'inherit', backgroundColor: darkMode ? '#1d2d50' : 'inherit' }}>{category}</MenuItem>
+                  <MenuItem key={index} value={category} sx={{ color: darkMode ? 'white' : 'inherit', '&:hover': {color: darkMode ? 'black' : 'inherit'},backgroundColor: darkMode ? '#1d2d50' : 'inherit' }}>{category}</MenuItem>
                 ))
               }
             </Select>
