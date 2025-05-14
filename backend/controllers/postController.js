@@ -234,12 +234,12 @@ export const addPost = async (req, res) => {
                 </div>
                 <div class="content">
                   <p>Hi there,</p>
-                  <p><strong>${username}</strong> just published a new blog on <strong>PostHub</strong>! 🎉</p>
+                  <p><strong>${username}</strong> just published a new blog on <strong>BlogHub</strong>! 🎉</p>
                   <p><strong>Title:</strong> ${title}</p>
                   <a href="${blogLink}" class="button">Read Full Post</a>
                   <p>Stay inspired and keep reading!</p>
                   <p>Thanks,</p>
-                  <p><strong>The PostHub </strong></p>
+                  <p><strong>The BlogHub </strong></p>
                 </div>
               </div>
             </body>

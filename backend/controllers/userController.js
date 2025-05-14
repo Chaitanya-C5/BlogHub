@@ -313,14 +313,14 @@ export const forgotPassword = async (req, res) => {
               </div>
               <div class="content">
                 <p>Dear ${user.username},</p>
-                <p>We received a request to reset your password for your <strong>PostHub</strong> account. Click the button below to reset it:</p>
+                <p>We received a request to reset your password for your <strong>BlogHub</strong> account. Click the button below to reset it:</p>
                 <a href="${resetLink}" class="button">Reset Password</a>
                 <p>If the button doesn't work, copy and paste the following link into your browser:</p>
                 <p><a href="${resetLink}" target="_blank" style="color: #007bff;">Reset Password</a></p>
                 <p><strong>Note:</strong> This link is valid for only 30 minutes.</p>
                 <p>If you didn’t request a password reset, you can safely ignore this email.</p>
                 <p>Thank you,</p>
-                <p>The <strong>PostHub</strong> Team</p>
+                <p>The <strong>BlogHub</strong> Team</p>
               </div>
             </div>
           </body>

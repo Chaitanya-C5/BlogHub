@@ -1,6 +1,6 @@
 openapi : 3.0.0
 info:
-  title: PostHub
+  title: BlogHub
   description: This is a multi user blog platform.
   version: 1.0.1
 

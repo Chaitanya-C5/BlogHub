@@ -118,7 +118,7 @@ const Blogs = () => {
               <button 
                 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-bold text-2xl"
                 onClick={() => navigate('/')}>
-                PostHub
+                BlogHub
               </button>
             )}
           </div>
@@ -183,7 +183,7 @@ const Blogs = () => {
               onClick={() => setIsSidebarOpen(true)}
             />
             <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-bold text-xl">
-              PostHub
+              BlogHub
             </h1>
           </div>
         </header>
