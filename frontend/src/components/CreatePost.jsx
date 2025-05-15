@@ -44,6 +44,11 @@ const CreatePost = () => {
         max-height: 200px;
         overflow-y: auto;
         overflow-x: hidden;
+        z-index: 2;
+      }
+
+      .ql-picker-options::-webkit-scrollbar {
+        display: none;
       }
       
       .ql-picker-label {
