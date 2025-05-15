@@ -70,7 +70,7 @@ const PostDetailModal = ({ post, onClose }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 modal-enter">
       <div className={`${darkMode 
         ? 'bg-gradient-to-r from-[#0a111e] to-[#1d2d50] text-white' 
-        : 'bg-white'} w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl relative p-6`}>
+        : 'bg-white'} w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl relative p-6  scrollbar-hide`}>
         <button
           onClick={onClose}
           className={`absolute top-4 right-4 ${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
