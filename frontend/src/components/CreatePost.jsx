@@ -40,16 +40,43 @@ const CreatePost = () => {
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `
+      /* Improved dropdown styling */
       .ql-toolbar .ql-picker-options {
-        max-height: 200px;
-        overflow-y: auto;
-        overflow-x: hidden;
+        max-height: none !important;
+        overflow: visible !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        border-radius: 4px;
+      }
+      
+      /* Make font/size/header pickers appear as proper dropdowns */
+      .ql-snow .ql-picker.ql-font .ql-picker-options,
+      .ql-snow .ql-picker.ql-size .ql-picker-options,
+      .ql-snow .ql-picker.ql-header .ql-picker-options {
+        display: none;
+        position: absolute;
+        padding: 5px 0;
+        min-width: 100%;
+        z-index: 1000;
+      }
+
+      .ql-snow .ql-picker.ql-expanded .ql-picker-options {
+        display: block;
+      }
+      
+      /* Style the dropdown items */
+      .ql-snow .ql-picker-item {
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      
+      .ql-snow .ql-picker-item:hover {
+        background-color: ${darkMode ? '#2a3f5f' : '#f0f0f0'};
       }
       
       .ql-picker-label {
         overflow: visible !important;
       }
-
 
       .ql-link {
         margin-top: 8px !important;
