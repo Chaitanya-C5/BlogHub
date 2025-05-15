@@ -44,7 +44,6 @@ const CreatePost = () => {
         max-height: 200px;
         overflow-y: auto;
         overflow-x: hidden;
-        z-index: 2;
       }
 
       .ql-picker-options::-webkit-scrollbar {
@@ -77,6 +76,13 @@ const CreatePost = () => {
       .ql-snow .ql-tooltip {
         position: absolute;
         transform: translateY(10px) !important;
+      }
+
+      .ql-snow .ql-picker.ql-expanded .ql-picker-options {
+        display: block;
+        margin-top: 1px;
+        top: 100%;
+        z-index: 2;
       }
       
       ${darkMode ? `
@@ -123,6 +129,7 @@ const CreatePost = () => {
         .ql-snow .ql-tooltip a.ql-remove {
           color: #4c70dd !important;
         }
+
       ` : ''}
     `;
     
