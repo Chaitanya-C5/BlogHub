@@ -133,9 +133,9 @@ const MiniHeader = () => {
                   value={searchFilter}
                   onChange={(e) => setSearchFilter(e.target.value)}
                 >
-                  <option value="title">Title</option>
-                  <option value="username">Username</option>
-                  <option value="tag">Tags</option>
+                  <option className={`${darkMode ? 'text-gray-600' : ''}`} value="title">Title</option>
+                  <option className={`${darkMode ? 'text-gray-600' : ''}`} value="username">Username</option>
+                  <option className={`${darkMode ? 'text-gray-600' : ''}`} value="tag">Tags</option>
                 </select>
               </div>
 
